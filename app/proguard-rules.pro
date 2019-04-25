@@ -21,3 +21,7 @@
 #-renamesourcefileattribute SourceFile
 
 -keep public class com.example.whiteboardfluttersdkdemo.models.** {*;}
+
+# aliyun live push
+-keep class com.alibaba.livecloud.** { *;}
+-keep class com.alivc.** { *;}

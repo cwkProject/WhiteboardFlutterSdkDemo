@@ -1,9 +1,13 @@
 package com.example.whiteboardfluttersdkdemo.activity
 
+import android.content.Context
+import android.content.Intent
+import android.media.projection.MediaProjectionManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.whiteboardfluttersdkdemo.R
 import com.example.whiteboardfluttersdkdemo.common.UserState
+import com.example.whiteboardfluttersdkdemo.component.ScreenPushComponent
 import com.example.whiteboardfluttersdkdemo.works.CreateMeetingWork
 import com.example.whiteboardfluttersdkdemo.works.GetMeetingWork
 import com.example.whiteboardfluttersdkdemo.works.LoginWork
@@ -21,6 +25,19 @@ import org.jetbrains.anko.toast
  * @since 1.0 2019/4/4
  **/
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        /**
+         * 录屏权限请求码
+         */
+        private const val RECORD_REQUEST_CODE = 12345
+    }
+
+    /**
+     * 推流工具
+     */
+    private var screenPush: ScreenPushComponent? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -72,6 +89,20 @@ class MainActivity : AppCompatActivity() {
                 meeting_number.error = "会议号不能为空"
             }
         }
+
+        screen_push.setOnClickListener {
+            if (screenPush != null) {
+                screenPush?.release()
+                screenPush = null
+                screen_push.text = "录屏直播"
+            } else {
+                val projectionManager = getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+
+                // 省略请求录音和相机权限操作
+
+                startActivityForResult(projectionManager.createScreenCaptureIntent(), RECORD_REQUEST_CODE)
+            }
+        }
     }
 
     /**
@@ -105,5 +136,19 @@ class MainActivity : AppCompatActivity() {
         )
 
         Flutter.startRoomActivity(this, roomInfo)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == RECORD_REQUEST_CODE) {
+            if (resultCode == RESULT_OK && data != null) {
+                screenPush = ScreenPushComponent().apply {
+                    startScreenPush(this@MainActivity, data)
+                }
+
+                screen_push.text = "停止直播"
+            }
+        }
     }
 }

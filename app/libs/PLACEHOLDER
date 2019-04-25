@@ -8,3 +8,9 @@ media_flutter-release.aar
 path_provider-release.aar
 permission_handler-release.aar
 white_board_flutter-release.aar
+
+# 阿里云推流SDK
+alivc-core-pusher.aar
+AlivcReporter.aar
+live-face-beauty-3.4.0.aar
+live-pusher-3.4.0.aar

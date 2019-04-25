@@ -76,4 +76,15 @@
             android:layout_marginStart="8dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/join_meeting"
             android:hint="会议密码"/>
+    <Button
+            android:text="录屏直播"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/screen_push"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/user_role"/>
 </android.support.constraint.ConstraintLayout>
