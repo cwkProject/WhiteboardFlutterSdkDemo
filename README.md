@@ -110,12 +110,13 @@ android {
 
 ``` kotlin
         val roomInfo = RoomInfo(
-            meetingId, // 房间id，String
-            userId,    // 客户自己的用户系统中的用户id，String
-            roleId,    // 该用户在本房间中的角色id(可选角色由客户定义)，Int
-            userName,  // 用户在房间中显示的名称，可空
-            avatar,    // 用户在房间中显示的头像，url，可空
-            password   // 房间的加入密码，String，可空，RoomActivity不提供密码输入界面，如果需要，密码输入界面应由客户端自行设计实现
+            appId,      // 用户分配到的appId
+            meetingId,  // 房间id，String
+            userId,     // 用户系统中的用户id，String
+            roleId,     // 该用户在本房间中的角色id(可选角色由客户定义)，Int
+            userName,   // 用户在房间中显示的名称，可空
+            avatar,     // 用户在房间中显示的头像，url，可空
+            password    // 房间的加入密码，String，可空，RoomActivity不提供密码输入界面，如果需要，密码输入界面应由客户端自行设计实现
         )
 
         // 启动房间

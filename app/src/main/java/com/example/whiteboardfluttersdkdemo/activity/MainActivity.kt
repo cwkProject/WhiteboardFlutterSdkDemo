@@ -127,6 +127,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val roomInfo = RoomInfo(
+            "b289e574dbae4ed9b63702877ff2b51f",
             meetingId,
             UserState.userId ?: "",
             user_role.text.toString().toInt(),
