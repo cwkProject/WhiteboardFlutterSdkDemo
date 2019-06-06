@@ -13,7 +13,9 @@ interface ValueUrl {
         /**
          * 根路径
          */
-        private const val BASE_URL = "https://sdk.chatboard.cn:8989/Demo"
+       // private const val BASE_URL = "https://sdk.chatboard.cn:8989/Demo"
+
+        private const val BASE_URL = "http://192.168.0.31:8989/Demo"
 
         /**
          * 根路径+/user
