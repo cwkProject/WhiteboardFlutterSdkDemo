@@ -25,3 +25,4 @@
 # aliyun live push
 -keep class com.alibaba.livecloud.** { *;}
 -keep class com.alivc.** { *;}
+-dontwarn com.alivc.**
